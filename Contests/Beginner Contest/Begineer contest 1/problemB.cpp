@@ -1,19 +1,31 @@
+//Efficient solution 
+#include<iostream> 
+using namespace std; 
+int main(){ 
+  string s,t; 
+  cin>>s>>t; 
+  cout<<(string::npos==s.find(t) ?"No" : "Yes");
+  return 0; 
+  } 
+
+//Naive solution 
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
   string s,t; 
   cin>>s>>t;
-  bool flag=false;
-  for(int i=0;i<s.size();i++){
-    if(s[i]==t[0]){
-      for(int j=0;j<t.size();j++){
-        if(s[i+j]==t[j] && (i+t.size())<=s.size()) {
-          flag=true;
+  int n=s.size(),m=t.size();
+  for(int i=0;i<n-m+1;i++) {
+    bool flag=true;
+      for(int j=0;j<m;j++){
+        if(s[i+j]!=t[j]) {
+          flag=false;
         }
-        else break;
       }
-    } }
-  if(flag) cout<<"yes";
-  else cout<<"no";
+       if(flag) {
+         cout<<"Yes"<<endl;
+         return 0;
+      } 
+  } cout<<"No"<<endl;
   return 0;
 }
